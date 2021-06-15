@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@types/jest": "~26.0.23",
-    "@types/node": "~14.14.45",
+    "@types/node": "^14.14.45",
     "@typescript-eslint/eslint-plugin": "~4.25.0",
     "@typescript-eslint/parser": "~4.25.0",
     "eslint": "~7.27.0",
@@ -33,7 +33,10 @@
   "author": "Peter Atkinson <peter@peteratkins.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "tslib": "~2.2.0"
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "~2.2.0",
+    "typeorm": "^0.2.34"
   },
   "volta": {
     "node": "14.16.1"

@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS discussions (
 CREATE UNIQUE INDEX discussionsIndex oN discussions(discussionId, ownerId)
 
 CREATE TABLE commentOwners (
-	ownerId                 uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate(),
-	ipAddress               TEXT          NOT NULL,
-	privacyMode             TEXT          NOT NULL DEFAULT "anonymous"
+  ownerId                 uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate(),
+  ipAddress               TEXT          NOT NULL,
+  privacyMode             TEXT          NOT NULL DEFAULT "anonymous"
 )
 
 CREATE UNIQUE INDEX commentOwnersIndex on commentOwners(ownerId, ipAddress)

@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS discussions (
-  discussionId             uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
-  domain                   TEXT          NOT NULL,
-  page                     TEXT          NOT NULL,
-  ownerId            	   uuid          NOT NULL DEFAULT uuid_generate_v4(),                        
-  state                    TEXT          NOT NULL, 
-  lastEventId 			   uuid 		 NOT NULL,
-  modifiedAt 			   TIMESTAMP	 NOT NULL,
-  createdAt                TIMESTAMP     NOT NULL
+  discussionId            uuid         NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
+  domain                  TEXT         NOT NULL,
+  page                    TEXT         NOT NULL,
+  ownerId                 uuid         NOT NULL DEFAULT uuid_generate_v4(),                        
+  state                   TEXT         NOT NULL, 
+  lastEventId             uuid         NOT NULL,
+  modifiedAt              TIMESTAMP    NOT NULL,
+  createdAt               TIMESTAMP    NOT NULL
 );
 
 CREATE UNIQUE INDEX discussionsIndex oN discussions(discussionId, ownerId)

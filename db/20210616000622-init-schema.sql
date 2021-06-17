@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS discussions (
   discussionId            uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
   domain                  TEXT          NOT NULL,
@@ -9,15 +10,15 @@ CREATE TABLE IF NOT EXISTS discussions (
   createdAt               TIMESTAMP     NOT NULL
 );
 
-CREATE UNIQUE INDEX discussionsIndex oN discussions(discussionId, ownerId)
+CREATE UNIQUE INDEX discussionsIndex oN discussions(discussionId, ownerId);
 
 CREATE TABLE commentOwners (
-  ownerId                 uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate(),
+  ownerId                 uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
   ipAddress               TEXT          NOT NULL,
-  privacyMode             TEXT          NOT NULL DEFAULT "anonymous"
-)
+  privacyMode             TEXT          NOT NULL
+);
 
-CREATE UNIQUE INDEX commentOwnersIndex on commentOwners(ownerId, ipAddress)
+CREATE UNIQUE INDEX commentOwnersIndex on commentOwners(ownerId, ipAddress);
 
 CREATE TABLE IF NOT EXISTS comments (
   commentId               uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -26,10 +27,10 @@ CREATE TABLE IF NOT EXISTS comments (
   markdown                TEXT          NOT NULL,
   ownerId                 uuid          NOT NULL,
   state                   TEXT          NOT NULL,
-  createdAt               TIMESTAMP     NOT NULL DEFAULT uuid_generate_v4(),
+  createdAt               TIMESTAMP     NOT NULL,
   lastEventId             uuid          NOT NULL,
   modifiedAt              TIMESTAMP     NOT NULL
-)
+);
 
 CREATE UNIQUE INDEX commentsIndex ON comments(commentId, discussionId);
 

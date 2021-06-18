@@ -33,6 +33,7 @@
   "author": "Peter Atkinson <peter@peteratkins.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/pg": "^8.6.0",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
     "tslib": "~2.2.0",

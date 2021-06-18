@@ -1,42 +1,28 @@
-import { Delays, greeter } from '../src/main';
+// import { getComkcments } from '../src/domain/comments'
+// import { PostgresClient } from '../src/domain/PostgresClient'
+import { Client } from 'pg'
 
 describe('greeter function', () => {
-  const name = 'John';
-  let hello: string;
-
-  let timeoutSpy: jest.SpyInstance;
-
   // Act before assertions
-  beforeAll(async () => {
-    // Read more about fake timers
-    // http://facebook.github.io/jest/docs/en/timer-mocks.html#content
-    // Jest 27 now uses "modern" implementation of fake timers
-    // https://jestjs.io/blog/2021/05/25/jest-27#flipping-defaults
-    // https://github.com/facebook/jest/pull/5171
-    jest.useFakeTimers();
-    timeoutSpy = jest.spyOn(global, 'setTimeout');
-
-    const p: Promise<string> = greeter(name);
-    jest.runOnlyPendingTimers();
-    hello = await p;
-  });
-
-  // Teardown (cleanup) after assertions
-  afterAll(() => {
-    timeoutSpy.mockRestore();
-  });
-
   // Assert if setTimeout was called properly
-  it('delays the greeting by 2 seconds', () => {
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(
-      expect.any(Function),
-      Delays.Long,
-    );
-  });
+  it('delays the greeting by 2 seconds', async () => {
+  //   // const comments = await getComments("459aab2d-6c65-4bdc-a1a2-ec79212e138e")
+  //   // expect(comments).toBeNull()
 
-  // Assert greeter result
-  it('greets a user with `Hello, {name}` message', () => {
-    expect(hello).toBe(`Hello, ${name}`);
-  });
+    // const connectionString = "postgresql://root:root@localhost:5432/test_db"
+  //   // Read more about fake timers
+  //   const client = new Client({
+  //     connectionString,
+  //   })
+
+  //   client.connect().then((value) => console.log(value))
+
+  //   client.query('SELECT NOW()', (err, res) => {
+  //     console.log(err, res)
+  //     client.end()
+  //   })
+  // });
+
+    expect(2).toBe(2)
+  })
 });

@@ -5,24 +5,24 @@ export class AddCommentController implements Controller {
   private readonly service: AddCommentService
 
   constructor (service: AddCommentService) {
-    if(service === null) {
+    if (service === null) {
       throw new Error('Missing dependency of type AddCommentService')
     }
-    
+
     this.service = service
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
-    const result = this.service.handle({...request});
+    this.service.handle({ ...request })
     return null
   }
 }
 
 export namespace AddCommentController {
   export type Request = {
-    discussionId: string,
-    parentId: string,
-    markdown: string,
+    discussionId: string
+    parentId: string
+    markdown: string
     ownerId: string
   }
 }

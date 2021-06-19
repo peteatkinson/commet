@@ -6,12 +6,11 @@ export class AddCommentService implements Service<AddCommentService.Request, boo
   }
 }
 
-
 export namespace AddCommentService {
   export type Request = {
-    discussionId: string,
-    parentId: string,
-    markdown: string,
+    discussionId: string
+    parentId: string
+    markdown: string
     ownerId: string
   }
 }

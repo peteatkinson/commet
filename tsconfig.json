@@ -1,8 +1,10 @@
+
 {
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "importHelpers": true,
@@ -12,14 +14,20 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "baseUrl": "src",
+    "rootDirs": ["src", "__tests__"],
+    "paths": {
+      "@/tests/*": ["./__tests__/*"],
+      "@/*": ["*"]
+    }
   },
   "include": [
-    "src/**/*",
+    "src",
     "__tests__/**/*"
   ]
 }

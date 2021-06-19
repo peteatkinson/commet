@@ -1,8 +1,8 @@
 import 'module-alias/register'
 
-import env from './config/env'
+import env from '@/config/env'
 
-import { PostgresClient } from './infrastructure/PostgresClient'
+import { PostgresClient } from '@/infrastructure/PostgresClient'
 
 PostgresClient.connect(env.postgressConnection)
   .then(async () => {

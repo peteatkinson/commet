@@ -1,7 +1,7 @@
 import { Client, QueryResult } from 'pg'
 
-class PostgresClient {
-  private static _instance?: PostgresClient
+class PostgresConnection {
+  private static _instance?: PostgresConnection
 
   client?: Client
   uri?: string
@@ -46,5 +46,5 @@ class PostgresClient {
   }
 }
 
-const client = PostgresClient.instance
-export { client as PostgresClient }
+const conn = PostgresConnection.instance
+export { conn as PostgresConnection }

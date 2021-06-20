@@ -1,4 +1,4 @@
-import { PostgresClient } from '../infrastructure/PostgresClient'
+import { PostgresConnection } from '../infrastructure/PostgresConnection'
 import { Comment } from './models/comment'
 
 const getComments = async (discussionId: string): Promise<Comment[]> => {
@@ -8,7 +8,7 @@ const getComments = async (discussionId: string): Promise<Comment[]> => {
 
   const query = 'SELECT * FROM comments WHERE discussionId = $1'
 
-  const result = await PostgresClient.query(query)
+  const result = await PostgresConnection.query(query)
 
   const comments: Comment[] = []
 

@@ -1,4 +1,4 @@
-import { PostgresClient as sut } from '@/infrastructure/PostgresClient'
+import { PostgresConnection as sut } from '@/infrastructure/PostgresConnection'
 
 describe('Postgres Client', () => {
   beforeAll(async () => {

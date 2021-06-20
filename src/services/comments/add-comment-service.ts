@@ -1,7 +1,8 @@
 import { Service } from '@/presentation/protocols'
 import { CommentsRepository } from '@/repositories'
+// import { MarkdownConverter, HtmlConverter } from '@/utils/converters'
 
-export class AddCommentService implements Service<AddCommentService.Request, boolean> {
+export class AddCommentService implements Service<AddCommentService.Request, Promise<boolean>> {
   private readonly repository: CommentsRepository
 
   constructor (repository: CommentsRepository) {
@@ -11,8 +12,8 @@ export class AddCommentService implements Service<AddCommentService.Request, boo
     this.repository = repository
   }
 
-  handle (request: AddCommentService.Request): boolean {
-    throw new Error('Method not implemented.')
+  async handle (request: AddCommentService.Request): Promise<boolean> {
+    throw new Error('Unimplemented function')
   }
 }
 

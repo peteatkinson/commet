@@ -23,9 +23,11 @@ CREATE UNIQUE INDEX commentOwnersIndex on commentOwners(ownerId, ipAddress);
 CREATE TABLE IF NOT EXISTS comments (
   commentId               uuid          NOT NULL UNIQUE PRIMARY KEY DEFAULT uuid_generate_v4(),
   discussionId            uuid          NOT NULL,
-  html                    TEXT          NOT NULL,
-  markdown                TEXT          NOT NULL,
+  parentId                uuid          NOT NULL,
   ownerId                 uuid          NOT NULL,
+  markdown                TEXT          NOT NULL,  
+  html                    TEXT          NOT NULL,
+  plainText               TEXT          NOT NULL,
   state                   TEXT          NOT NULL,
   createdAt               TIMESTAMP     NOT NULL,
   lastEventId             uuid          NOT NULL,

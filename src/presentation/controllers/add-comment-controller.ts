@@ -13,8 +13,7 @@ export class AddCommentController implements Controller {
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
-    this.service.handle({ ...request })
-    return null
+    throw new Error('Unimplemented function')
   }
 }
 

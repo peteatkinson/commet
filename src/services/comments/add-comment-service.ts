@@ -1,8 +1,12 @@
 import { Service } from '@/presentation/protocols'
+import { AddComment } from '@/commands/comments'
+// import { MarkdownConverter, HtmlConverter } from '@/utils/converters'
 
-export class AddCommentService implements Service<AddCommentService.Request, boolean> {
-  handle (request: AddCommentService.Request): boolean {
-    throw new Error('Method not implemented.')
+export class AddCommentService implements Service<AddCommentService.Request, Promise<string>> {
+  constructor (private readonly addComment: AddComment) { }
+
+  async handle (request: AddCommentService.Request): Promise<string> {
+    return await this.addComment.handle(null)
   }
 }
 

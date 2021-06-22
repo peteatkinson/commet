@@ -13,8 +13,11 @@ export class AddCommentController implements Controller {
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
-    this.service.handle({ ...request })
-    return null
+    const result = await this.service.handle(null)
+    return {
+      statusCode: 200,
+      body: result
+    }
   }
 }
 

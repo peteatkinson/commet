@@ -1,13 +1,13 @@
-
-
-
-
-export class AddCommentCommandHandler implements CommandHandler<AddComment.Params, AddComment.Result> {
-  executeCommand: (command?: AddComment.Params) => Promise<string>
+interface CommandHandler<TCommand, Value> {
+  handle: (command?: TCommand) => Promise<Value>
 }
 
-export interface CommandHandler<TCommand, Value> {
-  executeCommand: (command?: TCommand) => Promise<Value>
+export interface AddComment extends CommandHandler<AddComment.Params, AddComment.Result> { }
+
+export class AddCommentCommandHandler implements AddComment {
+  async handle (command?: AddComment.Params): Promise<string> {
+    return 'HELLO RESULT FROM ADD COMMENT COMMAND HANDLER'
+  }
 }
 
 export namespace AddComment {
@@ -16,5 +16,3 @@ export namespace AddComment {
   }
   export type Result = string
 }
-
-

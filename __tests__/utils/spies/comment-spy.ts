@@ -1,5 +1,4 @@
-import faker from 'faker'
-import { AddComment } from '../types'
+import { AddComment } from '..'
 import { v4 as uuidv4 } from 'uuid'
 
 export class AddCommentSpy implements AddComment {

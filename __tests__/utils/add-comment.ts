@@ -1,5 +1,5 @@
 export interface AddComment {
-  add:(comment: AddComment.Params) => Promise<AddComment.Result>
+  add: (comment: AddComment.Params) => Promise<AddComment.Result>
 }
 
 export namespace AddComment {

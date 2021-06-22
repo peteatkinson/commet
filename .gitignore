@@ -9,6 +9,8 @@ node_modules/
 # Coverage
 coverage
 
+!__tests__/coverage
+
 # Transpiled files
 build/
 

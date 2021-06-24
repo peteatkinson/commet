@@ -1,11 +1,8 @@
-import { AddComment } from '..'
+import { AddComment } from '@/commands/comments'
 import { v4 as uuidv4 } from 'uuid'
 
 export class AddCommentSpy implements AddComment {
-  params: AddComment.Params
-
-  async add (params: AddComment.Params): Promise<AddComment.Result> {
-    this.params = params
+  async handle (command?: AddComment.Params): Promise<AddComment.Result> {
     return uuidv4()
   }
 }

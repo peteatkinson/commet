@@ -17,9 +17,12 @@ const makeSut = (): Sut => {
 
 describe('AddCommentService', () => {
   test('Should return new commentId when creating new Comment', async () => {
-    const { service } = makeSut()
+    const { service, addCommentSpy } = makeSut()
+    const handleSpy = jest.spyOn(addCommentSpy, 'handle')
+
     const result = await service.handle(null)
     console.log(result)
-    expect(2).toBe(2)
+
+    expect(handleSpy).toBeCalledTimes(1)
   })
 })

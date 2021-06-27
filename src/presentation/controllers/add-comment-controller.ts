@@ -1,5 +1,6 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
 import { AddCommentService } from '@/services/comments/add-comment-service'
+import { makeBadRequest, makeServerError, makeOk } from '@/utils/http'
 
 export class AddCommentController implements Controller {
   private readonly service: AddCommentService
@@ -13,10 +14,16 @@ export class AddCommentController implements Controller {
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
-    const result = await this.service.handle(null)
-    return {
-      statusCode: 200,
-      body: result
+    const { discussionId, parentId, markdown, ownerId } = request
+    try {
+      const commentId = await this.service.handle({discussionId, parentId, markdown, ownerId})
+      if(!commentId) {
+        return makeBadRequest('Unable to create comment')
+      }
+      return makeOk(commentId)
+    }
+    catch(error) {
+      return makeServerError(error)
     }
   }
 }

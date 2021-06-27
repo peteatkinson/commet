@@ -3,15 +3,7 @@ import { AddCommentService } from '@/services/comments/add-comment-service'
 import { makeBadRequest, makeServerError, makeOk } from '@/utils/http'
 
 export class AddCommentController implements Controller {
-  private readonly service: AddCommentService
-
-  constructor (service: AddCommentService) {
-    if (service === null) {
-      throw new Error('Missing dependency of type AddCommentService')
-    }
-
-    this.service = service
-  }
+  constructor (readonly service: AddCommentService) { }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
     const { discussionId, parentId, markdown, ownerId } = request

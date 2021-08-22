@@ -5,9 +5,9 @@ import { AddCommentCommandHandler } from '@/commands/comments'
 import { CommentsRepository } from '@/repositories'
 
 export const makeAddCommentController = (): Controller => {
-  const commentsRepository = new CommentsRepository();
-  const addCommentCommandHandler = new AddCommentCommandHandler(commentsRepository);
-  const addCommentServce = new AddCommentService(addCommentCommandHandler);
+  const commentsRepository = new CommentsRepository()
+  const addCommentCommandHandler = new AddCommentCommandHandler(commentsRepository)
+  const addCommentServce = new AddCommentService(addCommentCommandHandler)
 
   return new AddCommentController(addCommentServce)
 }

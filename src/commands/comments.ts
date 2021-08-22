@@ -1,28 +1,29 @@
-import { CommentsRepository } from "@/repositories"
+import { CommentsRepository } from '@/repositories'
 
 interface CommandHandler<TCommand, Value> {
   handle: (command?: TCommand) => Promise<Value>
 }
 
-export interface AddComment extends CommandHandler<AddComment.Params, AddComment.Result> { }
+export interface AddComment extends CommandHandler<AddComment.Params, void> { }
 
 export class AddCommentCommandHandler implements AddComment {
-  private readonly repository: CommentsRepository;
-  
-  constructor(repository: CommentsRepository) {
-    this.repository = repository;
+  private readonly repository: CommentsRepository
+
+  constructor (repository: CommentsRepository) {
+    this.repository = repository
   }
-  
+
   async handle (command?: AddComment.Params): Promise<void> {
     const {
       discussionId,
       ownerId,
       parentId,
       markdown,
-      html, 
+      html,
       plainText
     } = command
-    return this.repository.addComment(discussionId, ownerId, parentId, markdown, html, plainText);
+
+    return this.repository.addComment(discussionId, ownerId, parentId, markdown, html, plainText)
   }
 }
 
@@ -35,5 +36,4 @@ export namespace AddComment {
     html: string
     plainText: string
   }
-  export type Result = void
 }

@@ -1,7 +1,7 @@
 import 'module-alias/register'
 
-import env from '@/config/env'
-import { InMemoryPostgresClient } from './infrastructure/InMemoryPostgresClient'
+// import env from '@/config/env'
+import { InMemoryPostgresClient } from '@/infrastructure/InMemoryPostgresClient'
 
 // import { PostgresClient } from '@/infrastructure/PostgresClient'
 
@@ -14,4 +14,4 @@ import { InMemoryPostgresClient } from './infrastructure/InMemoryPostgresClient'
 //   })
 
 // Using in memory database to test things for now until I setup a Postgres database using Docker
-InMemoryPostgresClient.seed();
+InMemoryPostgresClient.seed()

@@ -26,14 +26,14 @@ class InMemoryPostgresClient {
   }
 
   seed () {
-    this.db.public.none(`CREATE TABLE comments (
-      commentId               string        NOT NULL UNIQUE PRIMARY KEY,
-      discussionId            string        NOT NULL,
-      parentId                string        NOT NULL,
-      ownerId                 string        NOT NULL,
-      markdown                TEXT          NOT NULL,  
-      html                    TEXT          NOT NULL,
-      plainText               TEXT          NOT NULL,
+    this.db.public.none(`create table comments (
+      commentId text,
+      discussionId text,
+      parentId text,
+      ownerId text,
+      markdown text,  
+      html text,
+      plainText text
     );
     `)
   }

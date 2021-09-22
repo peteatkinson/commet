@@ -1,10 +1,10 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
-import { GetDiscussion } from '@/queries/get-discussion'
+import { FindDiscussionByIdQuery } from '@/queries'
 
 export class GetDiscussionController implements Controller {
-  private readonly queryHandler: GetDiscussion
+  private readonly queryHandler: FindDiscussionByIdQuery
 
-  constructor (queryHandler: GetDiscussion) {
+  constructor (queryHandler: FindDiscussionByIdQuery) {
     if (queryHandler === null) {
       throw new Error('Missing dependency of type GetDiscussion')
     }

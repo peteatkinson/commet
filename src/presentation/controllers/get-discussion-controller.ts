@@ -15,10 +15,10 @@ export class GetDiscussionController implements Controller {
   async handle (
     request: GetDiscussionController.Request
   ): Promise<HttpResponse> {
-    const result = await this.queryHandler.handle(null)
+    // const result = await this.queryHandler.handle(null)
     return {
       statusCode: 200,
-      body: result
+      body: `Hello from Controller: ID ${request.discussionId}`
     }
   }
 }

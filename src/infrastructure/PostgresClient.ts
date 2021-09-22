@@ -7,8 +7,7 @@ class PostgresClient {
   uri?: string
   connected?: boolean
 
-  private constructor () {
-  }
+  private constructor () {}
 
   static get instance () {
     return this._instance || (this._instance = new this())
@@ -18,12 +17,15 @@ class PostgresClient {
     this.client = new Client(uri)
     this.uri = uri
     return new Promise((resolve, reject) => {
-      this.client.connect().then(() => {
-        this.connected = true
-        resolve()
-      }).catch(() => {
-        reject(new Error('Unable to connect to the Postgres Database'))
-      })
+      this.client
+        .connect()
+        .then(() => {
+          this.connected = true
+          resolve()
+        })
+        .catch(() => {
+          reject(new Error('Unable to connect to the Postgres Database'))
+        })
     })
   }
 
@@ -33,16 +35,16 @@ class PostgresClient {
     this.connected = false
   }
 
-  async query (query: string, args: string[] = []): Promise<QueryResult> {
+  async query<T> (query: string, args: string[] = []): Promise<QueryResult<T>> {
     if (!this.connected) {
       await this.connect(this.uri)
     }
 
     if (args.length > 0) {
-      return this.client.query(query, args)
+      return this.client.query<T>(query, args)
     }
 
-    return this.client.query(query)
+    return this.client.query<T>(query)
   }
 }
 

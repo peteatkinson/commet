@@ -1,4 +1,14 @@
-import express, { Router, Request, Response, NextFunction, Express, json } from 'express'
+import express, {
+  Router,
+  Request,
+  Response,
+  NextFunction,
+  Express,
+  json
+} from 'express'
+
+import { extname } from 'path'
+import fg from 'fast-glob'
 
 class AppBuilder {
   private readonly app: Express
@@ -44,6 +54,19 @@ class AppBuilder {
   withRoutes (): AppBuilder {
     const router = Router()
     this.app.use('/api', router)
+
+    if (extname(__filename) === '.js') {
+      fg.sync('**/config/routes/**routes.js').map(async (file) => {
+        console.log(file);
+        (await import(`../../${file}`)).default(router)
+      })
+    } else {
+      fg.sync('**/routes/**routes.ts').map(async (file) => {
+        console.log(file);
+        (await import(`../../${file}`)).default(router)
+      })
+    }
+
     return this
   }
 

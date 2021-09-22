@@ -1,19 +1,19 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
-import { AddCommentService } from '@/services/comments/add-comment-service'
+import { AddComment } from '@/commands/add-comment'
 
 export class AddCommentController implements Controller {
-  private readonly service: AddCommentService
+  private readonly commandHandler: AddComment
 
-  constructor (service: AddCommentService) {
-    if (service === null) {
+  constructor (commandHandler: AddComment) {
+    if (commandHandler === null) {
       throw new Error('Missing dependency of type AddCommentService')
     }
 
-    this.service = service
+    this.commandHandler = commandHandler
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {
-    const result = await this.service.handle(null)
+    const result = await this.commandHandler.handle(null)
     return {
       statusCode: 200,
       body: result

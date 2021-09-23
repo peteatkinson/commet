@@ -5,10 +5,8 @@ export class GetDiscussionController implements Controller {
   private readonly queryHandler: GetDiscussionByIdQuery
 
   constructor (queryHandler: GetDiscussionByIdQuery) {
-    if (queryHandler === null) {
-      throw new Error('Missing dependency of type GetDiscussion')
-    }
-
+    if (queryHandler === null)
+      throw new Error('Missing dependency of type queryHandler:GetDiscussionByIdQuery')
     this.queryHandler = queryHandler
   }
 

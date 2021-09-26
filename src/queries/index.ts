@@ -1,1 +1,1 @@
-export * from './discussions/get-discussion-by-id';
+export * from './discussions/get-discussion-by-id'

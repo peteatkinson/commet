@@ -5,9 +5,10 @@ export class AddCommentController implements Controller {
   private readonly commandHandler: AddComment
 
   constructor (commandHandler: AddComment) {
-    if (commandHandler === null) 
+    if (commandHandler === null) {
       throw new Error('Missing dependency of type commandHandler:AddComment')
-    this.commandHandler = commandHandler;
+    }
+    this.commandHandler = commandHandler
   }
 
   async handle (request: AddCommentController.Request): Promise<HttpResponse> {

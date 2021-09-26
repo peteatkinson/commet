@@ -1,37 +1,19 @@
-import { DiscussionEntity } from '@/domain/entities';
 import { PostgresClient } from '@/infrastructure/PostgresClient'
-import { Discussion } from '@/types';
-
-
-function mapRows(rows: any[]) : any {
-  let result = {};
-  const row = rows[0];
-  if(row) {
-    if(row['discussion_id']) {
-      row['discussionId'] = row['discussion_id'];
-    }
-
-    if(row['comments']) {
-      result['comments'] = row['comments'];
-    }
-  }
-  return result;
-}
+import { Discussion } from '@/types'
+import { createDiscussion } from './mapper'
 
 export class DiscussionRepository {
   async getDiscussionById (discussionId: string): Promise<Discussion> {
     const query = `
       SELECT * FROM discussions d
-      INNER JOIN comments c 
-      ON p.discussion_id = c.discussion_id
-      WHERE discussion_id=${discussionId}'
+      INNER JOIN comments c
+      ON d.discussion_id = c.discussion_id
+      WHERE d.discussion_id='${discussionId}'
     `
-    const queryResult = await PostgresClient.query<Discussion>(query)
-
-    let discussion = null;
-
-    if(queryResult && queryResult.rowCount > 0) {
-      discussion = mapRows(queryResult.rows);
+    const queryResult = await PostgresClient.query(query)
+    console.log(queryResult)
+    if (queryResult && queryResult.rowCount > 0) {
+      return createDiscussion(queryResult.rows)
     }
 
     return null

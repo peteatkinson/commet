@@ -1,5 +1,5 @@
 import { PostgresClient } from '@/infrastructure/PostgresClient'
-import { Discussion } from '@/types'
+import { Discussion } from '@/domain/models'
 import { createDiscussion } from './mapper'
 
 export class DiscussionRepository {
@@ -10,12 +10,7 @@ export class DiscussionRepository {
       ON d.discussion_id = c.discussion_id
       WHERE d.discussion_id='${discussionId}'
     `
-    const queryResult = await PostgresClient.query(query)
-    console.log(queryResult)
-    if (queryResult && queryResult.rowCount > 0) {
-      return createDiscussion(queryResult.rows)
-    }
-
-    return null
+    const result = await PostgresClient.query(query)
+    return createDiscussion(result?.rows);
   }
 }

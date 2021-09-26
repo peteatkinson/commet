@@ -1,2 +1,2 @@
-export * from './add-comment-controller'
-export * from './get-discussion-controller'
+export * from './add-comment'
+export * from './list-comments'

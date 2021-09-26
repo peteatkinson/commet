@@ -3,4 +3,6 @@ export type Discussion = {
   comments: Comment[]
 }
 
-export type Comment = {}
+export type Comment = {
+  
+}

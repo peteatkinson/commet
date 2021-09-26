@@ -1,7 +1,9 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
 import { GetDiscussionByIdQuery } from '@/queries'
+import { Request } from '@/presentation/protocols/request';
+import { Response } from '@/presentation/protocols/response';
 
-export class GetDiscussionController implements Controller {
+export class ListCommentsController implements Controller {
   private readonly queryHandler: GetDiscussionByIdQuery
 
   constructor (queryHandler: GetDiscussionByIdQuery) {
@@ -11,20 +13,12 @@ export class GetDiscussionController implements Controller {
     this.queryHandler = queryHandler
   }
 
-  async handle (
-    request: GetDiscussionController.Request
-  ): Promise<HttpResponse> {
+  async handle (request: Request.GetDiscussionById): Promise<HttpResponse> {
     const result = await this.queryHandler.handle(request.discussionId)
 
     return {
       statusCode: 200,
       body: result
     }
-  }
-}
-
-export namespace GetDiscussionController {
-  export type Request = {
-    discussionId: string
   }
 }

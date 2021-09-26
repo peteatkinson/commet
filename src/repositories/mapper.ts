@@ -1,5 +1,5 @@
 
-import { Comment, Discussion } from '@/types'
+import { Comment, Discussion } from '@/domain/models'
 
 function createComment (row: any) {
   const discussionId = row['discussion_id']
@@ -26,13 +26,16 @@ function createComment (row: any) {
 }
 
 function createDiscussion (rows: any[]) {
-  const comments = rows.map((comment) => createComment(comment))
-  const discussionId = rows[0]['discussion_id']
-  const discussion: Discussion = {
-    discussionId,
-    comments
+  if(rows && rows.length > 0) {
+    const comments = rows.map((comment) => createComment(comment))
+    const discussionId = rows[0]['discussion_id']
+    const discussion: Discussion = {
+      discussionId,
+      comments
+    }
+    return discussion
   }
-  return discussion
+  return null
 }
 
 export {

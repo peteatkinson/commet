@@ -11,6 +11,6 @@ export class DiscussionRepository {
       WHERE d.discussion_id='${discussionId}'
     `
     const result = await PostgresClient.query(query)
-    return createDiscussion(result?.rows);
+    return createDiscussion(result?.rows)
   }
 }

@@ -1,20 +1,19 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
-import { GetDiscussionByIdQuery } from '@/queries'
-import { Request } from '@/presentation/protocols/request';
-import { Response } from '@/presentation/protocols/response';
+import { ListCommentsQuery } from '@/queries'
+import { Request } from '@/presentation/protocols/request'
 
 export class ListCommentsController implements Controller {
-  private readonly queryHandler: GetDiscussionByIdQuery
+  private readonly listCommentsQuery: ListCommentsQuery
 
-  constructor (queryHandler: GetDiscussionByIdQuery) {
-    if (queryHandler === null) {
-      throw new Error('Missing dependency of type queryHandler:GetDiscussionByIdQuery')
+  constructor (listCommentsQuery: ListCommentsQuery) {
+    if (listCommentsQuery === null) {
+      throw new Error('Missing dependency of type [ListCommentsQuery]')
     }
-    this.queryHandler = queryHandler
+    this.listCommentsQuery = listCommentsQuery
   }
 
-  async handle (request: Request.GetDiscussionById): Promise<HttpResponse> {
-    const result = await this.queryHandler.handle(request.discussionId)
+  async handle (request: Request.ListComments): Promise<HttpResponse> {
+    const result = await this.listCommentsQuery.handle(request.discussionId)
 
     return {
       statusCode: 200,

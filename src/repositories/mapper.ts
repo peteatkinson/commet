@@ -26,7 +26,7 @@ function createComment (row: any) {
 }
 
 function createDiscussion (rows: any[]) {
-  if(rows && rows.length > 0) {
+  if (rows && rows.length > 0) {
     const comments = rows.map((comment) => createComment(comment))
     const discussionId = rows[0]['discussion_id']
     const discussion: Discussion = {

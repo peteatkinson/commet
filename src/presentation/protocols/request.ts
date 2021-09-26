@@ -3,8 +3,7 @@ export namespace Request {
 
   }
 
-  export type GetDiscussionById = {
+  export type ListComments = {
     discussionId: string
   }
 }
-

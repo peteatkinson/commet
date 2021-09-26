@@ -4,5 +4,5 @@ export type Discussion = {
 }
 
 export type Comment = {
-  
+
 }

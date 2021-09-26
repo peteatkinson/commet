@@ -1,6 +1,6 @@
 import { HttpResponse, Controller } from '@/presentation/protocols'
 import { AddComment } from '@/commands/add-comment'
-import { Request } from '@/presentation/protocols/request';
+import { Request } from '@/presentation/protocols/request'
 
 export class AddCommentController implements Controller {
   private readonly commandHandler: AddComment
@@ -20,4 +20,3 @@ export class AddCommentController implements Controller {
     }
   }
 }
-
